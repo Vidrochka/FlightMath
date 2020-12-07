@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using FlightMath.Models;
+﻿using FlightMath.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
 
 namespace FlightMath.DB
 {
     public class FlightDbContext : DbContext
     {
-        private Func<FlightDbContext, IEnumerable<MainData>> _getDataWithAirports = EF.CompileQuery(
+        private readonly Func<FlightDbContext, IEnumerable<MainData>> _getDataWithAirports = EF.CompileQuery(
             (FlightDbContext context) => context.MainData
                 .AsNoTracking()
                 .Include(d => d.Airports)

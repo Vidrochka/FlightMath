@@ -15,7 +15,7 @@ namespace FlightMath.Utils
         public IEnumerable<string> ParseFloatElements(string row)
             => ParseElements(_floatElementsValue, row);
 
-        public IEnumerable<string> ParseNumberElements(string row) 
+        public IEnumerable<string> ParseNumberElements(string row)
             => ParseElements(_namderElementsValue, row);
 
         public IEnumerable<string> ParseStringElements(string row)
@@ -27,7 +27,7 @@ namespace FlightMath.Utils
         public IEnumerable<string> ParseDateElements(string row)
             => ParseElements(_datesElementsValue, row);
 
-        private IEnumerable<string> ParseElements(Regex regex, string row) 
+        private IEnumerable<string> ParseElements(Regex regex, string row)
             => regex.Matches(row).Select(match => match.Value);
     }
 }

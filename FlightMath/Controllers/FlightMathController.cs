@@ -1,22 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Globalization;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Dapper;
-using FlightMath.DB;
+﻿using FlightMath.DB;
+using FlightMath.DTO;
 using FlightMath.Models;
 using FlightMath.Utils;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.OpenApi.Any;
-using FlightMath.DTO;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Globalization;
+using System.Linq;
 
 namespace FlightMath.Controllers
 {
@@ -147,7 +140,7 @@ namespace FlightMath.Controllers
                 {
                     if (flight.PCWeight != null && flight.PCWeight != 0)
                     {
-                        return new []
+                        return new[]
                         {
                             (flight.PCWeight / CalculateWeight(flight.ActualKGs, _parser.ParseNumberElements(flight.Flights).Count()).Sum()).Value
                         };
@@ -211,7 +204,7 @@ namespace FlightMath.Controllers
             List<double> sectionsDistanse = new List<double>();
 
 
-            foreach (var section in pathSections)
+            foreach (Tuple<string, string> section in pathSections)
             {
                 Airport origin = pathAirports.Single(a => a.IataCode == section.Item1);
                 Airport destination = pathAirports.Single(a => a.IataCode == section.Item2);

@@ -4,7 +4,7 @@ namespace FlightMath.Utils
 {
     public class Validator
     {
-        private Regex _iataCode = new Regex(@"[A-Z]{3}", RegexOptions.Compiled);
+        private readonly Regex _iataCode = new Regex(@"[A-Z]{3}", RegexOptions.Compiled);
 
         public bool ValidateIATACode(string IataCode)
         {

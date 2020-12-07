@@ -1,8 +1,8 @@
-﻿using System;
-using System.IO;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
+using System;
+using System.IO;
 
 namespace FlightMath.DB
 {
@@ -10,11 +10,11 @@ namespace FlightMath.DB
     {
         public FlightDbContext CreateDbContext(string[] args)
         {
-            var optionsBuilder = new DbContextOptionsBuilder<FlightDbContext>();
+            DbContextOptionsBuilder<FlightDbContext> optionsBuilder = new DbContextOptionsBuilder<FlightDbContext>();
             IConfigurationRoot config = BuildConfiguration("appsettings.json");
 
             optionsBuilder.UseSqlServer(config.GetConnectionString("DefaultConnection"),
-                opts => opts.CommandTimeout((int) TimeSpan.FromMinutes(90).TotalSeconds));
+                opts => opts.CommandTimeout((int)TimeSpan.FromMinutes(90).TotalSeconds));
             return new FlightDbContext(optionsBuilder.Options);
         }
 

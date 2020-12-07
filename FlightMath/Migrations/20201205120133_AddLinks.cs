@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FlightMath.Migrations
 {
@@ -17,7 +16,7 @@ namespace FlightMath.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FlightPoint", x => new {x.MainDataSequence, x.AirportsSequence });
+                    table.PrimaryKey("PK_FlightPoint", x => new { x.MainDataSequence, x.AirportsSequence });
                     table.ForeignKey("FK_MainDataAirportLinks_MainData_MainDataId",
                         x => x.MainDataSequence,
                         principalSchema: "dbo",
@@ -46,7 +45,7 @@ namespace FlightMath.Migrations
                 name: "IX_MainDataSequenceAirportsSequenceLinks",
                 schema: "dbo",
                 table: "MainDataAirportLinks",
-                columns: new []{"AirportsSequence", "MainDataSequence"},
+                columns: new[] { "AirportsSequence", "MainDataSequence" },
                 unique: true);
 
             migrationBuilder.CreateIndex(

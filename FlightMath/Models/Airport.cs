@@ -1,11 +1,8 @@
-﻿using System;
+﻿using FlightMath.Models;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
-using FlightMath.Models;
-
-#nullable disable
 
 namespace FlightMath
 {
